@@ -10,16 +10,16 @@ class SBoInstaller
     source = links[1].attr('href')
     slackbuild = links[2].attr('href')
 
-    `
-    mkdir #{name}
-    cd #{name}
-    wget #{slackbuild}
-    tar xzf #{name}.tar.gz
-    cd #{name}
-    wget #{source}
-    chmod +x ./#{name}.SlackBuild
-    ./#{name}.SlackBuild
-    `
+    system(%{ 
+      mkdir #{name}
+      cd #{name}
+      wget #{slackbuild}
+      tar xzf #{name}.tar.gz
+      cd #{name}
+      wget #{source}
+      chmod +x ./#{name}.SlackBuild
+      ./#{name}.SlackBuild
+    })
 
   end
 
